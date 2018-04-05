@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<!-- we start out with our main element -->
+<div id="vue">
+    <div class="allTasks">
+        <h2>All tasks</h2>
+        <ul>
+            <li v-for="task in tasks" v-text="task.description">{{task.completed}}</li>
+        </ul>
+    </div>
+    <div class="incompletedTasks">
+        <h2>Incompleted tasks</h2>
+        <ul>
+            <li v-for="task in incompleteTasks" v-text="task.description"></li>
+        </ul>
+    </div>
+    <div class="completedTasks">
+        <h2>Completed Tasks</h2>
+        <ul>
+            <li v-for="task in completeTasks" v-text="task.description"></li>
+        </ul>
+    </div>
+</div>
+<script>
+    var app = new Vue({
+        el:'#vue',
+        data: {
+            /* declare our tasks */
+            tasks: [
+                {description: "Wake up", completed: false},
+                {description: "Eat breakfast", completed: false},
+                {description: "Take a nap", completed: true},
+                {description: "Study", completed: false},
+                {description: "Procrastinate", completed: true},
+                {description: "Learn programming", completed: false},
+                {description: "Kill the dragon ", completed: false},
+                {description: "Go to bed", completed: true}
+            ]},
+        /* we start off with our computed properties */
+        computed:{
+            incompleteTasks(){
+                return this.tasks.filter(task => ! task.completed);
+            },
+            completeTasks(){
+                return this.tasks.filter(task => task.completed);
+            }
+        },
+    });
+</script>
+<style>
+    .allTasks{
+        background-color: slateblue;
+        font-family: "Berlin Sans FB";
+        padding: 15px 10px 15px 10px;
+        color: Window;
+    }
+    .completedTasks{
+        background-color: darkgreen;
+        font-family: "Berlin Sans FB";
+        padding: 15px 10px 15px 10px;
+        color: Window;
+    }
+    .incompletedTasks{
+        background-color: crimson;
+        font-family: "Berlin Sans FB";
+        padding: 15px 10px 15px 10px;
+        color: Window;
+    }
+</style>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.min.css">
+    <style type="text/css">body{ padding-top:50px;} </style>
+</head>
+<body>
+<!-- we start out with our main element -->
+<div id="vue" class="container">
+    <div class="box">
+        <!-- firstly, we need to use v-if so when we open the page, we don't see our template element -->
+        <!-- secondly, we need to make a custom @close-->
+        <modal v-if="showModal" @close="showModal = false">
+            <p style="text-align: center">Change this text as much as you want to . . .</p>
+        </modal>
+        <!-- create a button that will toggle our template to make it visible -->
+        <button @click="showModal = true" class="button is-primary is-large">Show modal</button>
+        <!-- let's make another element -->
+        <log v-if="showLog" @close="showLog = false"></log>
+        <!-- create a button that will toggle our template to make it visible -->
+        <button @click="showLog = true" class="button is-success is-large">Show log</button>
+        <!-- let's make another element which will be toggled in main page -->
+        <info v-if="showInfo" @close="showInfo = false"></info>
+        <!-- create a button that will toggle our template to make it visible -->
+        <button @click="showInfo = true" class="button is-info is-large">Show info</button>
+    </div>
+</div>
+<script>
+    Vue.component('modal',{
+        /*create the template. For more info, visit http://bulma.io/documentation/components/modal/ */
+        template: `
+   <div class="modal is-active">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <slot></slot>
+            </div>
+        </div>
+        <button class="modal-close" @click="$emit('close')"></button>
+    </div>
+`,
+        /*we used $emit to work with our custom @close*/
+    });
+    Vue.component('log',{
+        /*create the template. For more info, visit http://bulma.io/documentation/components/modal/ */
+        template: `
+   <div class="modal is-active">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Put text here . . .</p>
+                <button class="delete" @click="$emit('close')"></button>
+            </header>
+            <section class="modal-card-body">
+                <input type="email">
+                <input type="datetime-local">
+            </section>
+            <footer class="modal-card-foot">
+                <a class="button is-success" @click="$emit('close')">Save changes</a>
+                <a class="button" @click="$emit('close')">Cancel</a>
+            </footer>
+            </div>
+            </div>
+`,
+        /*we used $emit to work with our custom @close */
+    });
+    Vue.component('info',{
+        /*create the template. For more info, visit http://bulma.io/documentation/elements/delete/ */
+        template: `
+        <article class="message is-info">
+  <div class="message-header">
+    Info
+    <button class="delete" @click="$emit('close')"></button>
+  </div>
+  <div class="message-body">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque risus mi, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum felis venenatis efficitur. Aenean ac eleifend lacus, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+  </div>
+</article>
+`,
+        /*we used $emit to work with our custom @close */
+    });
+    new Vue({
+        el:'#vue',
+        data:{
+            showModal: false,
+            showLog: false,
+            showInfo: false
+        }
+    });
+</script>
+    <!-- let's add some styles, shall we? -->
+<style>
+    .box{
+        text-align: center;
+        padding: 45px 90px 45px 90px;
+        margin: 5%;
+        background-color: lightgoldenrodyellow;
+    }
+    button{
+        margin: 5px 35px 5px 35px;
+    }
+</style>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- we just use this to check whether toggleClass works -->
+    <style>
+        .when-loading{
+            background-color: aquamarine;
+        }
+     button{
+         margin: 15px;
+     }
+    </style>
+</head>
+<body>
+<div id="vue">
+    <!-- we can use  v-bind:class  but the shorthand is  :class -->
+    <button :title="title">Hover me</button>
+    </br>
+    <button :class="{ 'when-loading':whenLoading}" @click="toggleClass">Click me</button>
+</div>
+<script>
+    new Vue({
+        el: "#vue",
+        data:{
+            title: 'The title is binded',
+            whenLoading:false  //we need to set it by default as false so when we toggle it, changes occur
+        },
+        methods:{
+            toggleClass(){
+                this.whenLoading = true; // when it's true, it toggles the class
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<!-- we start out with our main element -->
+<div id="vue">
+  <first_line>F</first_line><br/>
+    <second_line>B&emsp;C</second_line><br/>
+    <third_line>P&emsp;T&emsp;E&emsp;O</third_line><br/>
+    <fourth_line>B&emsp;Z&emsp;F&emsp;E&emsp;D</fourth_line><br/>
+    <fifth_line>O&emsp;F&emsp;C&emsp;L&emsp;T&emsp;B</fifth_line><br/>
+    <sixth_line>T&emsp;E&emsp;P&emsp;O&emsp;L&emsp;F&emsp;D&emsp;Z</sixth_line><br/>
+</div>
+<script>
+    /* declare new components */
+Vue.component('first_line',{
+    template: '<h1><slot></slot></h1>'
+});
+Vue.component('second_line',{
+    template: '<h2><slot></slot></h2>'
+});
+Vue.component('third_line',{
+    template: '<h3><slot></slot></h3>'
+});
+Vue.component('fourth_line',{
+    template: '<h4><slot></slot></h4>'
+});
+Vue.component('fifth_line',{
+    template: '<h5><slot></slot></h5>'
+});
+Vue.component('sixth_line',{
+    template: '<h6><slot></slot></h6>'
+});
+new Vue({
+    el:'#vue'
+});
+</script>
+<style>
+    #vue{
+        text-align:center;
+    }
+</style>
+</body>
+</html>

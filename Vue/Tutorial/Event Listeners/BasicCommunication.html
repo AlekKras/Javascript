@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue@2.2.6"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css">
+    <style>
+        body{ padding: 40px;}
+    </style>
+</head>
+<body>
+<div id="root">
+    <coupon @applied="onCouponApplied"></coupon>
+    <!-- we show the message if coupon is applied -->
+    <h2 v-if="couponApplied">You used a coupon</h2>
+</div>
+<script>
+    Vue.component('coupon', {
+        template: '<input placeholder="Enter your coupon code" @blur="onCouponApplied">', //once it's blured, it's applied
+
+        methods:{
+            onCouponApplied(){
+                this.$emit('applied'); //we emit the event that only parent listens to
+            }
+        }
+
+    });
+
+    new Vue({
+        el: '#root',
+        data:{
+            couponApplied: false
+        },
+
+        methods:{
+            onCouponApplied(){
+                this.couponApplied = true;
+            }
+        }
+    })
+</script>
+</body>
+</html>

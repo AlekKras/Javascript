@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.4/typed.min.js"></script>
+    <div id="container">
+
+        <script>
+            $(function(){
+                $(".element").typed({
+                    strings: ["Lorem ipsum dolor sit amet, consectetuer adipiscing elit. " +
+                    "Praesent aliquam, justo convallis luctus rutrum, erat nulla fermentum diam, at nonummy quam ante ac quam." +
+                    " Maecenas urna purus, fermentum id, molestie in, commodo porttitor, felis." +
+                    " Nam blandit quam ut lacus. Quisque ornare risus quis ligula. Phasellus tristique purus a augue condimentum adipiscing." +
+                    " Fusce metus mi, eleifend sollicitudin, molestie id, varius et, nibh. Donec nec libero", "Just kidding, lol"],
+                    typeSpeed: 0
+                });
+            });
+        </script>
+<div class="element"></div>
+        </div>
+    <marquee width="100%" height="50" behavior="slide" Scrolldelay="50"><p>Look at this line below ↓          Type some of those words to see what it does...
+    Enjoy...</p></marquee>
+    <marquee id="poop" width="100%" height="50" behavior="alternate" Scrolldelay="50"><p>lol, sad, haha, wow, love, like, yeah, hm, sleep, nap, kiss, ear,
+    nose, snow, pizza, burger, alarm, etc.</p></marquee>
+</head>
+    <body>
+<div id="app">
+    <textarea v-model="input"></textarea>
+    <div id="result">{{{ input | emoji }}}</div>
+
+</div>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+<script>
+    Vue.filter('emoji', function(value) {
+        return value.replace('yeah', '&#128515;')
+            .replace('lol','&#128518;')
+            .replace('sad', '&#128557;')
+            .replace('haha', '&#128516;')
+            .replace('wow','&#128560;')
+            .replace('love', '&#10084;')
+            .replace('like', '&#10084;')
+            .replace('oh','&#128559')
+            .replace('hm', '&#128293;')
+            .replace('yep', '&#128533;')
+            .replace('crap','&#128545;')
+            .replace('sleep', '&#128564;')
+            .replace('nap', '&#128564;')
+            .replace('fishy','&#128529;;')
+            .replace('yes', '&#128077;')
+            .replace('no', '&#128078;')
+            .replace('ok','&#128076;')
+            .replace('wonderful', '&#128079;')
+            .replace('nice', '&#128079;')
+            .replace('nose','&#128067;')
+            .replace('ear', '&#128066;')
+            .replace('kiss', '&#128139;')
+            .replace('crap','&#128169;')
+            .replace('snow', '&#10052;')
+            .replace('drink', '&#127863;')
+            .replace('old','&#127877;')
+            .replace('soccer', '&#9917;')
+            .replace('cloud', '&#9925;')
+            .replace('banana','&#127820;')
+            .replace('beer', '&#127866;')
+            .replace('tomato', '&#127813;')
+            .replace('tomat','&#127813;')
+            .replace('cherry', '&#127826;;')
+            .replace('finish', '&#127937;')
+            .replace('sheep', '&#128015;')
+            .replace('cock','&#128019;')
+            .replace('dog', '&#128054;')
+            .replace('pig', '&#128055;')
+            .replace('cat', '&#128049;')
+            .replace('time','&#9203;')
+            .replace('baseball', '&#9918;')
+            .replace('sun', '&#9728;')
+            .replace('pizza', '&#127829;')
+            .replace('burger','&#127828;')
+            .replace('donuts', '&#127849;')
+            .replace('saxophone', '&#127927;')
+            .replace('basket','&#127936;')
+            .replace('coffee', '&#9749;')
+            .replace('danger', '&#9888;')
+            .replace('telephone', '&#9742;')
+            .replace('alarm','&#9200;')
+            .replace('sunday', '&#9962;')
+            .replace('golf', '&#9971;')
+            .replace('boat', '&#9973;')
+            .replace('scissors','&#9986;')
+            .replace('bread', '&#127838;')
+            .replace('fishing', '&#127907;')
+    })
+    new Vue({
+        el: "#app",
+        data: {
+            input: '',
+
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!-- we use Bulma CSS framework here. For more details about Bulma, visit http://bulma.io/ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- CDN for Bulma -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.min.css">
+    <style type="text/css">body{ padding-top:50px;} </style>
+</head>
+<body>
+<!-- we start out with our main element -->
+<div id="vue" class="container">
+ <!-- we create new component called message -->
+    <message title="Hello World" body="Lorem ipsum"></message>
+    <message title="Hi there" body="I have no idea what I am doing"></message>
+</div>
+<script>
+    Vue.component('message',{
+        props: ['title', 'body'],
+        data(){
+          return{
+          /* that is used so we can either show or hide an object */
+            isVisible: true
+          };
+        },
+        /*basically, we create the template of snippet on site. Here we use message */
+        template: `
+    <article class="message" v-show="isVisible"> /* v-show is needed so if we click on button, our element disappears*/
+        <div class="message-header">
+            {{title}}
+            <button type="button" class="button is-small is-danger is-inverted is-outlined" @click="isVisible = false">CLOSE</button>
+        </div>
+        <div class="message-body">
+            {{body}}
+        </div>
+    </article>
+`,
+        });
+    new Vue({
+        el:'#vue'
+    });
+</script>
+</body>
+</html>

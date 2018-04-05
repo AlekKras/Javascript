@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.min.css">
+    <style type="text/css">body{ padding-top:50px;} </style>
+</head>
+<body>
+<!-- we start out with our main element -->
+<div id="vue" class="container">
+    <tabs>
+        <tab name="About Us" :selected="true">
+            <h1>Here is the content for the about us tab.</h1>
+        </tab>
+        <tab name="More Info">
+            <h1>Here is the content for the more info tab.</h1>
+        </tab>
+        <tab name="Contact us">
+            <h1>Here is the content for the contact us tab.</h1>
+        </tab>
+    </tabs>
+</div>
+<script>
+    Vue.component('tabs',{
+        template:`
+<div>
+    <div class="tabs is-centered">
+      <ul>
+        <li v-for="tab in tabs" :class="{ 'is-active': tab.isActive }">
+        <a :href="tab.href" @click="selectTab(tab)">{{tab.name}}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="tabs-details">
+        <slot></slot>
+    </div>
+</div>
+`,
+        data(){
+            return {tabs:[]};
+        },
+    created(){
+            this.tabs=this.$children; //to tag every tab created
+    },
+        methods:{ //it filters through all children and updates their property
+            selectTab(selectedTab){
+                this.tabs.forEach(tab=>{
+                    tab.isActive = (tab.name == selectedTab.name)
+                });
+            }
+        }
+    });
+    /*we use v-show to make sure that once clicked it displays only the property of one specific tab*/
+    Vue.component('tab',{
+        template:`
+<div v-show="isActive"><slot></slot></div>
+`,
+        props:{
+            name: { required: true },
+            selected: {default: false}
+        },
+        data(){
+            return{
+                isActive: false
+            };
+        },
+        computed:{
+            href(){
+                /* we put string to lower case and then replace any spaces with dashes*/
+                return '#' + this.name.toLowerCase().replace(/ /g, '-');
+            }
+        },
+        mounted(){
+            this.isActive = this.selected;
+        }
+    });
+new Vue({
+    el: '#vue'
+});
+</script>
+</body>
+</html>

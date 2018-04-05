@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="vue">
+    <ul>
+        <li v-for="name in names" v-text="name"></li>
+    </ul>
+    <input type="text" v-model="newName">
+    <!-- you can also type <button v-on:click="addName">Add new name</button>
+     Basically, v-on:click and @click are the same.
+    -->
+    <button @click="addName">Add new name</button>
+    <!-- let's make a button that deletes the last element of our array-->
+    <button @click="deleteName">Delete the last element</button>
+    <!-- let's make a button that deletes the first element-->
+    <button @click="deleteFirstElement">Delete the First Element</button>
+    <!-- let's make a button that sorts our array-->
+    <button @click="sortArray">Sort the array</button>
+</div>
+<script>
+    new Vue({
+        el: "#vue",
+        data:{
+            names: ['Mary', 'had','a','little', 'lamb'],
+            newName: ''
+        },
+        methods:{   /* we build a method where we append our array with a newName by using push method and delete the last element with pop() method*/
+            addName(){
+                this.names.push(this.newName);
+                /*as you can see, our placeholder still has our previous newName. We want to clear it our so by every time we add newName, our input area is clear from the previous one*/
+                this.newName=''
+            },
+            deleteName(){
+                this.names.pop();
+            },
+            deleteFirstElement(){
+                this.names.shift();
+            },
+            sortArray(){
+                this.names.sort();
+            }
+        }
+    })
+</script>
+<!-- let's add some styling, shall we? -->
+<style>
+    button{
+        -webkit-animation: background 5s cubic-bezier(0,0,1,1) infinite;
+        animation: background 5s cubic-bezier(1,1,0,0) infinite;
+        background-color:#3A4F5E;
+        border: #2e6da4;
+        font-family: Arial, Geneva, Arial, Helvetica,  sans-serif;
+        font-size: 15px;
+        color: #fff;
+        letter-spacing: 1px;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: normal;
+        border-radius: 4px;
+        line-height: 1.5;
+        text-decoration:none;
+        /*Transition*/
+        -webkit-transition: All 1s ease;
+        -moz-transition: All 1s ease;
+        -o-transition: All 1s ease;
+        -ms-transition: All 1s ease;
+        transition: All 1s ease;
+    }
+    button:hover{
+        background-color:#87A2B6;
+        border: #2e6da4;
+        font-family: Arial, Geneva, Arial, Helvetica,  sans-serif;
+        font-size: 15px;
+        color: #000;
+        letter-spacing: 1px;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: normal;
+        border-radius: 4px;
+        line-height: 1.5;
+        text-decoration:none;
+    }
+    body{
+        -webkit-animation: background 5s cubic-bezier(0,1,1,0) infinite;
+        animation: background 5s cubic-bezier(0,1,1,0) infinite;
+    }
+    #vue {
+        margin: 25px;
+        padding: 25px;
+        -webkit-animation: background 5s cubic-bezier(1,0,0,1) infinite;
+        animation: background 5s cubic-bezier(1,0,0,1) infinite;
+        font-family: "Copperplate Gothic Bold";
+    }
+    @-webkit-keyframes background {
+        0% { background-color: #f99; }
+        33% { background-color: #9f9; }
+        67% { background-color: #99f; }
+        100% { background-color: #f99; }
+    }
+    @keyframes background {
+        0% { background-color: #f99; }
+        33% { background-color: #9f9; }
+        67% { background-color: #99f; }
+        100% { background-color: #f99; }
+    }
+</style>
+</body>
+</html>

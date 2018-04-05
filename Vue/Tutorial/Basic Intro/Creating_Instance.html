@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script> <!-- you can use cdn or npm as well, but this one is great at the beginning.-->
+</head>
+    <body>
+    <div id="vue">
+        <!-- we use v-model to output our instance-->
+        <input type="text" id="text" v-model="message">
+        <!-- I advice you to take a look how our DOM changes while we are changing message in browser-->
+        <p>This element is up here: {{message}}</p>
+    </div>
+    <script>
+    /*creating Vue instance */
+new Vue( {
+    el: '#vue', /* bind to div's id*/
+    data: {
+        message: "Hello VUE"   /*this is our message which can be viewed as a variable*/
+    }
+})
+    </script>
+    </body>
+</html>

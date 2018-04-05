@@ -1,0 +1,122 @@
+html, body, #result {
+    margin: 0;
+    height: 100%;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #333;
+}
+html{
+    background-color: #BE83A9;
+}
+#result{
+    background-color: #EAD4A4;
+}
+
+#app, input {
+    font-size: 50px;
+    font-weight: 300;
+    font-family: 'Roboto Condensed'
+}
+
+#app {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    color: #222;
+}
+
+input {
+    border: none;
+    width: 200px;
+    text-align: center;
+    outline: none;
+}
+
+#app > ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+
+textarea, #result {
+    display: inline-block;
+    width: 100%;
+    height: 350px;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding: 25px;
+    font-size: 18px;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+textarea {
+    border: none;
+    border-right: 1px solid #ccc;
+    resize: none;
+    outline: none;
+    background-color: #f6f6f6;
+    font-family: 'Monaco', courier, monospace;
+}
+
+#result {
+    font-size: 22px;
+    display: inline-block;
+}
+#container{
+    background-color: #DFE6DD;
+    font-family: "Comic Sans MS";
+    resize: none;
+    margin: 10px;
+    padding: 25px;
+
+}
+
+marquee{
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 15px;
+}
+#poop{
+    margin-left: 20 px;
+    margin-right: 20px;
+    padding: 5px;
+}
+
+/*для мигающего курсора*/
+
+
+
+
+
+
+
+
+
+
+
+.typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.1s infinite;
+    -moz-animation: blink 0.1s infinite;
+    animation: blink 0.1s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
